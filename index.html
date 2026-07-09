@@ -281,36 +281,36 @@
       width: min(390px, 32vw);
     }
 
-    .scene[data-chapter="3"] {
+    .scene[data-chapter="4"] {
       background:
         radial-gradient(circle at 46% 34%, rgba(255, 226, 169, 0.16), transparent 28%),
         radial-gradient(circle at 76% 36%, rgba(255, 143, 191, 0.12), transparent 26%),
         linear-gradient(180deg, rgba(10, 7, 22, 0.48), rgba(2, 3, 9, 0.82));
     }
 
-    .scene[data-chapter="3"] .planet.large {
+    .scene[data-chapter="4"] .planet.large {
       left: 63%;
       top: 6%;
       opacity: 0.16;
       transform: scale(0.72);
     }
 
-    .scene[data-chapter="3"] .planet.mid {
+    .scene[data-chapter="4"] .planet.mid {
       right: 66%;
       top: 18%;
       opacity: 0.18;
       transform: scale(0.96);
     }
 
-    .scene[data-chapter="3"] .ring-planet {
+    .scene[data-chapter="4"] .ring-planet {
       right: 8%;
       top: 42%;
       opacity: 0.30;
       transform: rotate(-8deg) scale(1.24);
     }
 
-    .scene[data-chapter="3"] .hero-copy,
-    .scene[data-chapter="3"] .message {
+    .scene[data-chapter="4"] .hero-copy,
+    .scene[data-chapter="4"] .message {
       display: none;
       opacity: 0;
       pointer-events: none;
@@ -435,7 +435,7 @@
       will-change: transform, opacity, filter;
     }
 
-    .scene[data-chapter="3"] .memory-card {
+    .scene[data-chapter="4"] .memory-card {
       opacity: 1;
       pointer-events: auto;
       transform: translate3d(-50%, 0, 0) scale(1);
@@ -793,7 +793,7 @@
         min-height: 680px;
       }
 
-      .scene[data-chapter="3"] {
+      .scene[data-chapter="4"] {
         min-height: 900px;
       }
 
@@ -832,7 +832,7 @@
         width: auto;
       }
 
-      .scene[data-chapter="3"] .memory-card {
+      .scene[data-chapter="4"] .memory-card {
         left: 22px;
         right: auto;
         top: 36px;
@@ -840,8 +840,8 @@
         transform: translate3d(0, 0, 0) scale(1);
       }
 
-      .scene[data-chapter="3"] .hero-copy,
-      .scene[data-chapter="3"] .message {
+      .scene[data-chapter="4"] .hero-copy,
+      .scene[data-chapter="4"] .message {
         display: none;
       }
 
@@ -901,7 +901,7 @@
         margin: 0 auto;
       }
 
-      .scene[data-chapter="3"] {
+      .scene[data-chapter="4"] {
         min-height: 930px;
       }
 
@@ -975,7 +975,7 @@
         bottom: 78px;
       }
 
-      .scene[data-chapter="3"] .memory-card {
+      .scene[data-chapter="4"] .memory-card {
         left: 18px;
         right: auto;
         top: 22px;
@@ -1025,7 +1025,7 @@
         min-height: 680px;
       }
 
-      .scene[data-chapter="3"] {
+      .scene[data-chapter="4"] {
         min-height: 950px;
       }
 
@@ -1090,7 +1090,8 @@
         <button class="chapter-dot active" data-chapter-target="0" aria-label="第一幕"></button>
         <button class="chapter-dot" data-chapter-target="1" aria-label="第二幕"></button>
         <button class="chapter-dot" data-chapter-target="2" aria-label="第三幕"></button>
-        <button class="chapter-dot" data-chapter-target="3" aria-label="彩蛋幕"></button>
+        <button class="chapter-dot" data-chapter-target="3" aria-label="第四幕"></button>
+        <button class="chapter-dot" data-chapter-target="4" aria-label="彩蛋幕"></button>
       </div>
       <div class="status-line" id="statusLine">LOADING AMBIENT BGM · MOVE · CLICK</div>
     </section>
@@ -1132,32 +1133,39 @@
     let autoMode = true;
     const chapters = [
       {
-        eyebrow: "今天的星系，只为你亮起",
-        title: "生日<br>快乐",
+        eyebrow: "远航 · 今天的星系，只为你亮起",
+        title: "温柔<br>远航",
         wish: "愿新的一岁像一场温柔的远航，有清晰的方向，也有被星光照亮的归途。",
         message: "大哥，生日快乐。愿你心中所想，皆有回响；眼里所望，皆能抵达。愿新的一岁把你喜欢的、期待的、正在奔赴的，都一件件送到你身边。",
-        status: "SCENE 01 · CELESTIAL OPENING"
+        status: "SCENE 01 · 远航"
       },
       {
-        eyebrow: "愿望正在穿过星轨",
-        title: "所想<br>皆有",
-        wish: "愿你想要的都有答案，正在等的都有回音，认真奔赴的方向都开出漂亮的光。",
-        message: "把这句话送给大哥：愿你要的不是遥远的星，而是伸手可及的光；愿生活把惊喜藏进每一天，慢慢送到你面前。",
-        status: "SCENE 02 · WISH ORBIT"
+        eyebrow: "热爱 · 愿望正在穿过星轨",
+        title: "热爱<br>有光",
+        wish: "愿你的热爱一直有回响，所有坚持都在某天变成漂亮答案。",
+        message: "大哥，愿你的热爱永远不被辜负；每一次认真、每一次坚持，都在未来某个时刻变成照亮你的漂亮答案。",
+        status: "SCENE 02 · 热爱"
       },
       {
-        eyebrow: "祝福已抵达坐标",
-        title: "万事<br>胜意",
-        wish: "愿新的一岁，热爱不降温，好运不缺席，身边始终有温柔的人和明亮的事。",
-        message: "大哥，愿你一路有风景，也有底气；有想要就去拿的勇敢，也有想停就能停的从容。生日快乐，未来继续闪耀。",
-        status: "SCENE 03 · WISH ARRIVED"
+        eyebrow: "好运 · 祝福已抵达坐标",
+        title: "好运<br>常在",
+        wish: "愿好运不是偶尔路过，而是慢慢成为你生活里的常客。",
+        message: "大哥，愿好运不只是偶尔经过，而是慢慢住进你的日子里；想要的有回应，奔赴的有结果，未来继续闪耀。",
+        status: "SCENE 03 · 好运"
+      },
+      {
+        eyebrow: "陪伴 · 温柔的人都在身边",
+        title: "一路<br>陪伴",
+        wish: "愿你身边总有人懂你的沉默，也认真收藏你的快乐。",
+        message: "大哥，愿你一路有风景，也有底气；有想要就去拿的勇敢，也有想停就能停的从容。更重要的是，身边始终有温柔的人和明亮的事。",
+        status: "SCENE 04 · 陪伴"
       },
       {
         eyebrow: "温馨提示",
         title: "两个<br>彩蛋",
         wish: "轻点照片里的发光位置，打开第二个彩蛋。",
         message: "温馨提示：这里有两个彩蛋。",
-        status: "温馨提示 · 这里有两个彩蛋"
+        status: "SCENE 05 · 彩蛋"
       }
     ];
 
@@ -1215,6 +1223,7 @@
         message.textContent = chapter.message;
         statusLine.textContent = chapter.status;
         chapterDots.forEach((dot, index) => dot.classList.toggle("active", index === chapterIndex));
+        chips.forEach((chip, index) => chip.classList.toggle("active", index === chapterIndex));
         if (chapterIndex > 0) message.classList.add("show");
         else message.classList.remove("show");
         window.requestAnimationFrame(() => scene.classList.add("is-entering"));
@@ -1258,17 +1267,13 @@
       window.clearTimeout(autoTimer);
       autoTimer = window.setTimeout(() => {
         setChapter(1);
-        window.setTimeout(() => activateWish(1), 420);
         autoTimer = window.setTimeout(() => {
           setChapter(2);
-          window.setTimeout(() => {
-            statusLine.textContent = "SCENE 03 · WISH ARRIVED";
-          }, 420);
           autoTimer = window.setTimeout(() => {
             setChapter(3);
-            window.setTimeout(() => {
-              statusLine.textContent = "温馨提示 · 这里有两个彩蛋";
-            }, 420);
+            autoTimer = window.setTimeout(() => {
+              setChapter(4);
+            }, 30000);
           }, 30000);
         }, 30000);
       }, 30000);
@@ -1277,6 +1282,14 @@
     function stopAutoSequence() {
       autoMode = false;
       window.clearTimeout(autoTimer);
+    }
+
+    function requestChapter(targetIndex) {
+      if (targetIndex === chapters.length - 1 && chapterIndex < chapters.length - 2) {
+        setChapter(chapters.length - 2);
+        return;
+      }
+      setChapter(targetIndex);
     }
 
     function trail(x, y, count = 5) {
@@ -1568,14 +1581,14 @@
     chapterDots.forEach((dot) => {
       dot.addEventListener("click", () => {
         stopAutoSequence();
-        setChapter(Number(dot.dataset.chapterTarget));
+        requestChapter(Number(dot.dataset.chapterTarget));
       });
     });
 
     chips.forEach((chip) => {
       chip.addEventListener("click", () => {
         stopAutoSequence();
-        activateWish([...chips].indexOf(chip));
+        requestChapter([...chips].indexOf(chip));
       });
     });
 
