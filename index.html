@@ -1269,9 +1269,9 @@
             window.setTimeout(() => {
               statusLine.textContent = "温馨提示 · 这里有两个彩蛋";
             }, 420);
-          }, 6200);
-        }, 6200);
-      }, 5200);
+          }, 30000);
+        }, 30000);
+      }, 30000);
     }
 
     function stopAutoSequence() {
@@ -1414,21 +1414,28 @@
       if (!AudioContext) return null;
       const context = new AudioContext();
       const master = context.createGain();
+      const compressor = context.createDynamicsCompressor();
       const padFilter = context.createBiquadFilter();
       const shimmerDelay = context.createDelay(1.2);
       const shimmerFeedback = context.createGain();
       const shimmerGain = context.createGain();
-      master.gain.value = 0.32;
+      master.gain.value = 0.96;
+      compressor.threshold.value = -18;
+      compressor.knee.value = 22;
+      compressor.ratio.value = 7;
+      compressor.attack.value = 0.012;
+      compressor.release.value = 0.18;
       padFilter.type = "lowpass";
       padFilter.frequency.value = 980;
       shimmerDelay.delayTime.value = 0.54;
       shimmerFeedback.gain.value = 0.30;
-      shimmerGain.gain.value = 0.34;
+      shimmerGain.gain.value = 0.88;
       shimmerDelay.connect(shimmerFeedback);
       shimmerFeedback.connect(shimmerDelay);
       shimmerDelay.connect(shimmerGain);
       shimmerGain.connect(master);
-      master.connect(context.destination);
+      master.connect(compressor);
+      compressor.connect(context.destination);
       audio = { context, master, padFilter, shimmerDelay, step: 0 };
       return audio;
     }
@@ -1462,13 +1469,13 @@
       ];
       const now = audio.context.currentTime + 0.03;
       const chord = chords[audio.step % chords.length];
-      playTone(chord[0] / 2, now, 5.2, 0.064, "sine", audio.master);
+      playTone(chord[0] / 2, now, 5.2, 0.086, "sine", audio.master);
       [0, 1, 2, 4].forEach((noteIndex, index) => {
-        playTone(chord[noteIndex], now + index * 0.09, 3.8, index === 0 ? 0.052 : 0.036, "sine", audio.master);
+        playTone(chord[noteIndex], now + index * 0.09, 3.8, index === 0 ? 0.070 : 0.048, "sine", audio.master);
       });
       [0.18, 0.62, 1.06, 1.72, 2.28, 2.92].forEach((offset, index) => {
         const melody = [2, 4, 3, 4, 2, 1][index];
-        playTone(chord[melody] * 2, now + offset, 1.08, 0.032, "triangle", audio.shimmerDelay);
+        playTone(chord[melody] * 2, now + offset, 1.08, 0.050, "triangle", audio.shimmerDelay);
       });
       audio.step += 1;
     }
@@ -1586,6 +1593,7 @@
     scene.addEventListener("click", (event) => {
       if (event.target.closest("button")) return;
       if (event.target.closest(".memory-card")) return;
+      startMusicSoftly(true);
       stopAutoSequence();
       setChapter(chapterIndex + 1);
     });
@@ -1601,6 +1609,7 @@
     }, { passive: true });
 
     scene.addEventListener("touchstart", (event) => {
+      startMusicSoftly(true);
       const touch = event.touches[0];
       touchStartX = touch.clientX;
       touchStartY = touch.clientY;
